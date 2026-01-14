@@ -1,44 +1,58 @@
 #include <bits/stdc++.h>
 using namespace std;
-void complexRec(int n)
+using namespace chrono;
+int operations = 0;
+int maxDepth = 0;
+void complexRec(int n, int depth)
 {
-
+    maxDepth = max(maxDepth, depth);
     if (n <= 2)
     {
+        operations++;
         return;
     }
-    int count=0;
     int p = n;
     while (p > 0)
     {
         vector<int> temp(n);
+        operations++;
         for (int i = 0; i < n; i++)
         {
-            temp[i] = i ^ p;
-            count++;
+            temp[i = i] = i ^ p;
+            operations++;
         }
         p >>= 1;
-        count++;
+        operations++;
     }
-
     vector<int> small(n);
+    operations++;
     for (int i = 0; i < n; i++)
     {
         small[i] = i * i;
-        count++;
+        operations++;
     }
-
-    if (n % 3 == 0)
-    {
-        reverse(small.begin(), small.end());
-    }
-    else
-    {
-        reverse(small.begin(), small.end());
-    }
-
-    complexRec(n / 2);
-    complexRec(n / 2);
-    complexRec(n / 2);
+    reverse(small.begin(), small.end());
+    operations += n;
+    complexRec(n / 2, depth + 1);
+    complexRec(n / 2, depth + 1);
+    complexRec(n / 2, depth + 1);
 }
+
+int main()
+{
+    int n;
+    cin >> n;
+    operations = 0;
+    maxDepth = 0;
+    auto start = high_resolution_clock::now();
+    complexRec(n, 1);
+    auto end = high_resolution_clock::now();
+    auto duration = duration_cast<milliseconds>(end - start);
+    cout<<"Operations"<<operations<<endl;
+    cout<<"depth"<<maxDepth<<endl;
+    cout<<"time"<<duration.count()<<endl;
+    return 0;
+}
+
+
 
