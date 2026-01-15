@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 using namespace chrono;
-int operations = 0;
+long long operations = 0;
 int maxDepth = 0;
 void complexRec(int n, int depth)
 {
@@ -57,6 +57,7 @@ int main()
 
 
 }
+
 
 
 
