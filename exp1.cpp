@@ -52,7 +52,12 @@ int main()
     cout<<"depth"<<maxDepth<<endl;
     cout<<"time"<<duration.count()<<endl;
     return 0;
+    //T(n)=3T(n/2)+O(nlogn)+n
+    //CASE 1:time complexity using case 1 O(n^log2(3))
+
+
 }
+
 
 
 
