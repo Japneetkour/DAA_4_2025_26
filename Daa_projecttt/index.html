@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>AlgoVista - DSA Visualizer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <h2>AlgoVista</h2>
+
+            <div class="control-group">
+                <h3>Select Mode</h3>
+                <button onclick="switchMode('stack')">Stack Operations</button>
+                <button onclick="switchMode('graph')">Graph Algorithms</button>
+            </div>
+
+            <div id="stack-controls" class="mode-controls">
+                <h3>Stack Actions</h3>
+                <input type="number" id="stackValue" placeholder="Value">
+                <button class="btn-push" onclick="push()">Push</button>
+                <button class="btn-pop" onclick="pop()">Pop</button>
+            </div>
+
+            <div id="graph-controls" class="mode-controls" style="display:none;">
+                <h3>Graph Actions</h3>
+                <button class="btn-algo" onclick="startDijkstra()">Dijkstra</button>
+                <button class="btn-algo" onclick="startBellmanFord()">Bellman-Ford</button>
+                <button class="btn-reset" onclick="resetGraph()">Reset Graph</button>
+            </div>
+
+            <div class="status-box">
+                <h4>Status:</h4>
+                <p id="status-text">Ready...</p>
+            </div>
+        </aside>
+        <main class="viz-area">
+            <div id="stack-viz" class="viz-container"></div>
+            <div id="graph-viz" class="viz-container" style="display:none;">
+                <svg id="svg-edges"></svg>
+                <div id="nodes-layer"></div>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
